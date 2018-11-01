@@ -1,4 +1,4 @@
-package com.imooc.dataobject;
+package com.imooc.sell.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +23,15 @@ public class ProductCategory {
      * 类目类型
      */
     private Integer categoryType;
+
+    @Override
+    public String toString() {
+        return "ProductCategory{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                ", categoryType=" + categoryType +
+                '}';
+    }
 
     public Integer getCategoryId() {
         return categoryId;

@@ -14,6 +14,10 @@ import static com.sun.activation.registries.LogSupport.log;
 public class LoggerTest {
 
     String a="a";
+
+    /**
+     * log无法直接使用，需要增加lombok插件
+     */
     @Test
     public void test1(){
         log.debug("debug........{}",a);
