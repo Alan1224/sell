@@ -1,13 +1,19 @@
 package com.imooc.sell.entity;
 
+import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * 类目表
  */
 @Entity
+@DynamicUpdate//动态更新
+@Data//lombok的功能，不需要写getset方法
 public class ProductCategory {
     /**
      * 类目Id
@@ -24,36 +30,23 @@ public class ProductCategory {
      */
     private Integer categoryType;
 
-    @Override
-    public String toString() {
-        return "ProductCategory{" +
-                "categoryId=" + categoryId +
-                ", categoryName='" + categoryName + '\'' +
-                ", categoryType=" + categoryType +
-                '}';
+    public ProductCategory() {
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
+    public ProductCategory(String categoryName, Integer categoryType) {
         this.categoryName = categoryName;
-    }
-
-    public Integer getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(Integer categoryType) {
         this.categoryType = categoryType;
     }
+//    /**
+//     * 创建时间
+//     * @return
+//     */
+//    private Date createTime;
+//
+//    /**
+//     * 更新时间
+//     * @return
+//     */
+//    private Date updateTime;
+
 }
