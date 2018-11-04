@@ -47,7 +47,7 @@ public class ProductServiceImplTest {
 
     @Test
     public void save() {
-        ProductInfo productInfo = productService.save(new ProductInfo("123457","皮皮虾",new BigDecimal(1),1000,"很麻烦的虾","http://www.baidu.com",ProductStatusEnum.DOWN.getCode(),2));
+        ProductInfo productInfo = productService.save(new ProductInfo("123456","皮蛋粥",new BigDecimal(10.0),1000,"很麻烦的虾","http://www.baidu.com",ProductStatusEnum.UP.getCode(),1));
         Assert.assertNotNull(productInfo);
     }
 }

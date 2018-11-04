@@ -20,6 +20,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.imooc.sell.Utils.ResultVOUtil.success;
+
 /**
  * 买家商品
  * Created by SuperHappyPolaris
@@ -42,12 +44,15 @@ public class BuyerProductController {
         List<Integer> categoryTypes = productInfos.stream().map(e -> e.getCategoryType()).collect(Collectors.toList());
         List<ProductCategory> categories = categoryService.findByCategoryTypeIn(categoryTypes);
         //3、数据拼装
-        List<ProductInfoVO> productInfoVOS = new ArrayList<>();
         List<ProductVO> productVOList = new ArrayList<>();
+        /**
+         * 数据库的查询一定不要放进for循环内
+         */
         for (ProductCategory c :categories) {
             ProductVO productVO = new ProductVO();
             productVO.setCategoryType(c.getCategoryType());
             productVO.setCategoryName(c.getCategoryName());
+            List<ProductInfoVO> productInfoVOS = new ArrayList<>();
             for (ProductInfo productInfo:productInfos) {
                 if (c.getCategoryType().equals(productInfo.getCategoryType())){
                     ProductInfoVO productInfoVO = new ProductInfoVO();
@@ -58,10 +63,6 @@ public class BuyerProductController {
             productVO.setProductVOS(productInfoVOS);
             productVOList.add(productVO);
         }
-        ResultVO resultVO = new ResultVO();
-        resultVO.setCode(0);
-        resultVO.setMsg("success");
-        resultVO.setData(productVOList);
-        return resultVO;
+        return success(productVOList);
     }
 }
