@@ -69,9 +69,9 @@ public class OrderServiceImpl implements OrderService {
         }
         //3、写入订单数据库
         OrderMaster orderMaster = new OrderMaster();
+        orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO,orderMaster);
         orderMaster.setOrderAmount(orderAmount);
-        orderMaster.setOrderId(orderId);
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
         orderMasterDao.save(orderMaster);
@@ -107,7 +107,7 @@ public class OrderServiceImpl implements OrderService {
     public Page<OrderDTO> findList(String buyerOpenId, Pageable pageable) {
         Page<OrderMaster> masters = orderMasterDao.findByBuyerOpenid(buyerOpenId,pageable);
         List<OrderDTO> orderDTOS = OrderMaster2OrderDTOConverter.convert(masters.getContent());
-        return new PageImpl<OrderDTO>(orderDTOS,pageable,masters.getTotalElements());
+        return new PageImpl<>(orderDTOS,pageable,masters.getTotalElements());
     }
 
     @Override
@@ -186,5 +186,12 @@ public class OrderServiceImpl implements OrderService {
             throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
         }
         return orderDTO;
+    }
+
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        Page<OrderMaster> orderMasters = orderMasterDao.findAll(pageable);
+        List<OrderDTO> orderDTOS = OrderMaster2OrderDTOConverter.convert(orderMasters.getContent());
+        return new PageImpl<>(orderDTOS,pageable,orderMasters.getTotalElements());
     }
 }

@@ -8,4 +8,6 @@ spring:
     hibernate:
       ddl-auto: update
   profiles:
-    active: h
+    active: dev
+  jackson:
+    default-property-inclusion: non_null #@JsonInclude(JsonInclude.Include.NON_NULL)这个注解的全局配置

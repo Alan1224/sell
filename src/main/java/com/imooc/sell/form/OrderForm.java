@@ -31,7 +31,7 @@ public class OrderForm {
      * 买家微信openId
      */
     @NotEmpty(message = "openId必填")
-    private String openId;
+    private String openid;
     /**
      * 购物车
      */

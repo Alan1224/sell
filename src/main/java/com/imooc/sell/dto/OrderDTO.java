@@ -1,5 +1,8 @@
 package com.imooc.sell.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.imooc.sell.Utils.serializer.Date2LongSerializer;
 import com.imooc.sell.entity.OrderDetail;
 import com.imooc.sell.entity.OrderMaster;
 import com.imooc.sell.enums.OrderStatusEnum;
@@ -17,6 +20,7 @@ import java.util.List;
  * @Date:Create in 2018/11/3 20:21
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     /**
      * 订单编号
@@ -53,11 +57,13 @@ public class OrderDTO {
     /**
      * 订单创建时间
      */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     /**
      * 订单更新时间
      */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
     private List<OrderDetail> orderDetailList;
 }

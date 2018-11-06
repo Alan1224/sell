@@ -65,7 +65,7 @@ public class OrderServiceImplTest {
     @Test
     public void findList() {
         Page<OrderDTO> result = orderService.findList("beichen1224",new PageRequest(0,2));
-        log.info("[查询单个订单] result={}",result);
+        log.info("[查询多个订单] result={}",result);
         Assert.assertNotNull(result);
     }
 
@@ -88,5 +88,11 @@ public class OrderServiceImplTest {
         OrderDTO orderDTO = orderService.findOne("1541305394941445009");
         OrderDTO result = orderService.paid(orderDTO);
         Assert.assertEquals(PayStatusEnum.SUCCESS.getCode(),result.getPayStatus());
+    }
+    @Test
+    public void list(){
+        Page<OrderDTO> result = orderService.findList(new PageRequest(0,10));
+        log.info("[查询多个订单] result={}",result);
+        Assert.assertNotNull(result);
     }
 }
