@@ -50,4 +50,13 @@ public class ProductServiceImplTest {
         ProductInfo productInfo = productService.save(new ProductInfo("123456","皮蛋粥",new BigDecimal(10.0),1000,"很麻烦的虾","http://www.baidu.com",ProductStatusEnum.UP.getCode(),1));
         Assert.assertNotNull(productInfo);
     }
+
+    @Test
+    public void offSale(){
+        Assert.assertNotNull(productService.offSale("123456"));
+    }
+    @Test
+    public void onSale(){
+        Assert.assertNotNull(productService.onSale("123456"));
+    }
 }

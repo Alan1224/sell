@@ -1,0 +1,5 @@
+<meta charset="utf-8">
+        <title>卖家后台管理</title>
+        <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<#--侧边栏的css-->
+        <link rel="stylesheet" href="/sell/css/style.css">

@@ -29,6 +29,15 @@ public class ProductCategory {
      * 类目类型
      */
     private Integer categoryType;
+    /**
+     * 订单创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 订单更新时间
+     */
+    private Date updateTime;
 
     public ProductCategory() {
     }
@@ -37,16 +46,4 @@ public class ProductCategory {
         this.categoryName = categoryName;
         this.categoryType = categoryType;
     }
-//    /**
-//     * 创建时间
-//     * @return
-//     */
-//    private Date createTime;
-//
-//    /**
-//     * 更新时间
-//     * @return
-//     */
-//    private Date updateTime;
-
 }

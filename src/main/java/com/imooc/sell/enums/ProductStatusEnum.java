@@ -1,6 +1,7 @@
 package com.imooc.sell.enums;
 
 import lombok.Getter;
+import org.aspectj.apache.bcel.classfile.Code;
 
 /**
  * 商品状态
@@ -9,7 +10,7 @@ import lombok.Getter;
  * @Date:Create in 15:42 2018/11/2
  */
 @Getter
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum {
     UP(0,"在架"),
     DOWN(1,"下架")
     ;

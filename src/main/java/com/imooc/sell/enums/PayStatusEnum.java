@@ -1,6 +1,7 @@
 package com.imooc.sell.enums;
 
 import lombok.Getter;
+import org.aspectj.apache.bcel.classfile.Code;
 
 /**
  * Created by SuperHappyPolaris
@@ -8,7 +9,7 @@ import lombok.Getter;
  * @Date:Create in 2018/11/3 12:09
  */
 @Getter
-public enum PayStatusEnum {
+public enum PayStatusEnum implements CodeEnum {
 
     WAIT(0,"等待支付"),
     SUCCESS(1,"支付成功")
